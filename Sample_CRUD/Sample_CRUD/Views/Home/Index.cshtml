@@ -1,0 +1,115 @@
+﻿
+@model Sample_CRUD.Models.tbl_Student
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .dtactive {
+        background-color: #a2aba2 !important;
+    }
+    th {
+        background-color: #74dcec !important;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h3 class="card-title">
+                        STUDENT INFORMATION
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form id="frmStudent">
+                        @Html.HiddenFor(m => m.StudentID)
+                        <div class="row justify-content-center">
+                            <div class="col-md-3">
+                                <div>First Name</div>
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.FirstName)
+                            </div>
+                            <div class="col-md-3">
+                                <div>Middle Name</div>
+                                @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.MiddleName)
+                            </div>
+                            <div class="col-md-3">
+                                <div>Last Name</div>
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.LastName)
+                            </div>
+                            <div class="col-md-3">
+                                <div>Gender</div>
+                                @Html.DropDownList("GenderID", ViewData["cmbGender"] as SelectList, new { @class = "form-control flat" })
+                                @Html.ValidationMessageFor(x => x.GenderID)
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-2">
+                            <div class="col-md-2">
+                                <div>Year Level</div>
+                                @Html.TextBoxFor(m => m.YearLevel, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.YearLevel)
+                            </div>
+                            <div class="col-md-3">
+                                <div>Province</div>
+                                @Html.TextBoxFor(m => m.Province, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.Province)
+                            </div>
+                            <div class="col-md-3">
+                                <div>City</div>
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.City)
+                            </div>
+                            <div class="col-md-2">
+                                <div>Purok</div>
+                                @Html.TextBoxFor(m => m.Purok, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.Purok)
+                            </div>
+                            <div class="col-md-2">
+                                <div>Street</div>
+                                @Html.TextBoxFor(m => m.Street, new { @class = "form-control flat", @type = "text", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.Street)
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row justify-content-end p-2">
+                            <button type="button" id="btnClear" class="btn btn-danger mr-2">Cancel</button>
+                            <button type="button" id="btnSaveStudent" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h3 class="card-title">
+                        LIST OF STUDENTS
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row p-3">
+                        <div class="col-md-12">
+                            <div class="dataTable_wrapper table-responsive">
+                                <table id="StudentTable" class="table table-bordered text-center" style="width:100%"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/JSStudent.js")" type="text/javascript"></script>
+}
